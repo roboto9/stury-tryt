@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Multi-Player Pro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <h1>YouTube Multi-Player Pro</h1>
+            <p>Diffusion simultanée, contrôle de vitesse et suivi en direct</p>
+        </header>
+
+        <main>
+            <!-- Panneau de configuration -->
+            <section class="card control-panel">
+                <h2>Paramètres de Lecture</h2>
+                <div class="form-grid">
+                    <div class="form-group full-width">
+                        <label for="txtUrl">Lien de la vidéo YouTube :</label>
+                        <input type="text" id="txtUrl" placeholder="https://www.youtube.com/watch?v=..." autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="numWindows">Nombre de fenêtres (Max 12) :</label>
+                        <select id="numWindows">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3" selected>3</option>
+                            <option value="4">4</option>
+                            <option value="6">6</option>
+                            <option value="8">8</option>
+                            <option value="12">12</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="numTarget">Objectif de vues (0 = Infini) :</label>
+                        <input type="number" id="numTarget" min="0" max="1000000" value="12">
+                    </div>
+                    <div class="form-group">
+                        <label for="selSpeed">Vitesse de lecture :</label>
+                        <select id="selSpeed">
+                            <option value="1">1x (Normal)</option>
+                            <option value="1.25">1.25x</option>
+                            <option value="1.5">1.5x (Accéléré)</option>
+                            <option value="2" selected>2x (Maximum)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="stats-box">
+                    <div class="stat-item">
+                        <span class="stat-label">Statut :</span>
+                        <span id="lblStatus" class="stat-value status-ready">Prêt à démarrer</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Vues validées :</span>
+                        <span id="viewCounter" class="stat-value counter-highlight">0</span>
+                    </div>
+                </div>
+
+                <div class="btn-container">
+                    <button id="btnStart" class="btn btn-success" onclick="startSystem()">Démarrer</button>
+                    <button id="btnStop" class="btn btn-danger" onclick="stopSystem()" disabled>Arrêter</button>
+                </div>
+            </section>
+
+            <!-- Grille des lecteurs vidéo responsive -->
+            <section class="players-section">
+                <div id="playersContainer" class="players-grid"></div>
+            </section>
+        </main>
+    </div>
+
+    <!-- API YouTube IFrame -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="script.js"></script>
+</body>
+</html>
